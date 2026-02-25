@@ -1,0 +1,38 @@
+# Compiled binaries
+*.o
+*.a
+*.so
+*.dylib
+*.dll
+*.exe
+
+# CMake build directory
+build/
+cmake_build_debug/
+cmake_build_release/
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Executable files
+/bin/
+*.out
+
+# Object files and archives
+*.obj
+*.lib
+*.pdb
+
+# Visual Studio
+.vs/
+*.vcxproj.user
+
+# Xcode
+*.xcodeproj/
+*.xcworkspace/
+DerivedData/
