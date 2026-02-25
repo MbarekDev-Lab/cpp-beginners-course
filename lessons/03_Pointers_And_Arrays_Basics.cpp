@@ -76,7 +76,7 @@ int main()
     // Reset pointer to beginning
     pTexts = texts;
 
-    for (int i = 0; i < sizeof(texts) / sizeof(string); i++, pTexts++)
+    for (int i = 0; i < sizeof(texts) / sizeof(string); i++, pTexts++) // loop 3 times, increment pointer each time
     {
         cout << *pTexts << " " << flush;
     }
