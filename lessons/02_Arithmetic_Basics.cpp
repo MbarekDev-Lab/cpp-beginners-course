@@ -1,6 +1,6 @@
 //============================================================================
 // Lesson: Arithmetic Operations in C++ - Basics
-// Author: John Purcell (Modified and Enhanced)
+// Author: M'Barek Benraiss
 // Date: February 25, 2026
 // Topic: Operators, Type Casting, and Precedence
 //============================================================================
