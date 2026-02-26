@@ -168,6 +168,55 @@ int main()
 
     cout << "\n  Final: [o][l][l][e][h] = \"olleh\"" << endl;
 
+    //=========================================================================
+    // SECTION 7: Different Implementation Styles
+    //=========================================================================
+    cout << "\n--- SECTION 7: Different Ways to Implement Reversal ---" << endl;
+
+    cout << "\n1. BASIC WHILE LOOP (Clearest for beginners):" << endl;
+    cout << "   char text[] = \"hello\";" << endl;
+    cout << "   char *pStart = text;" << endl;
+    cout << "   char *pEnd = text + 4;" << endl;
+    cout << "   while (pStart < pEnd) {" << endl;
+    cout << "       char ch = *pStart;" << endl;
+    cout << "       *pStart = *pEnd;" << endl;
+    cout << "       *pEnd = ch;" << endl;
+    cout << "       pStart++;" << endl;
+    cout << "       pEnd--;" << endl;
+    cout << "   }" << endl;
+
+    cout << "\n2. FOR LOOP WITH POINTER UPDATES (Compact syntax):" << endl;
+    cout << "   for (; pStart < pEnd; pStart++, pEnd--) {" << endl;
+    cout << "       char ch = *pStart;" << endl;
+    cout << "       *pStart = *pEnd;" << endl;
+    cout << "       *pEnd = ch;" << endl;
+    cout << "   }" << endl;
+    cout << "   Benefits: loop control in one line" << endl;
+
+    cout << "\n3. FOR LOOP WITH INITIALIZATION (All initialization in header):" << endl;
+    cout << "   for (char *pStart = text, *pEnd = text + nChars - 1;" << endl;
+    cout << "        pStart < pEnd;" << endl;
+    cout << "        pStart++, pEnd--) {" << endl;
+    cout << "       char ch = *pStart;" << endl;
+    cout << "       *pStart = *pEnd;" << endl;
+    cout << "       *pEnd = ch;" << endl;
+    cout << "   }" << endl;
+    cout << "   Benefits: self-contained, no setup needed before loop" << endl;
+
+    cout << "\n4. MODERN C++ WITH std::swap (Most idiomatic):" << endl;
+    cout << "   for (char *left = text, *right = text + nChars - 1;" << endl;
+    cout << "        left < right;" << endl;
+    cout << "        left++, right--) {" << endl;
+    cout << "       std::swap(*left, *right);" << endl;
+    cout << "   }" << endl;
+    cout << "   Benefits: clearer intent, standard library function" << endl;
+
+    cout << "\n--- WHICH ONE TO USE? ---" << endl;
+    cout << "• Learning: Use #1 (while loop) - most explicit" << endl;
+    cout << "• Interviews: Use #2 or #3 - shows good syntax knowledge" << endl;
+    cout << "• Production: Use #4 - standard C++ style" << endl;
+    cout << "\nAll four approaches have same complexity: O(n) time, O(1) space" << endl;
+
     return 0;
 }
 

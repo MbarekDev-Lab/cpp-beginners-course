@@ -233,6 +233,119 @@ int length = strlen(text);
 char *pEnd = text + length - 1;
 ```
 
+## Implementation Styles
+
+There are multiple ways to implement the string reversal algorithm. Each style has its own advantages depending on context.
+
+### Style 1: Basic While Loop (Best for Learning)
+
+```cpp
+char text[] = "hello";
+int nChars = strlen(text);
+
+char *pStart = text;
+char *pEnd = text + nChars - 1;
+
+while (pStart < pEnd) {
+    char ch = *pStart;
+    *pStart = *pEnd;
+    *pEnd = ch;
+
+    pStart++;
+    pEnd--;
+}
+```
+
+**Advantages**:
+
+- Most explicit and easy to understand
+- Clear separation of setup and loop logic
+- Best for beginners
+
+### Style 2: For Loop with Pointer Updates (Compact)
+
+```cpp
+char *pStart = text;
+char *pEnd = text + nChars - 1;
+
+for (; pStart < pEnd; pStart++, pEnd--) {
+    char ch = *pStart;
+    *pStart = *pEnd;
+    *pEnd = ch;
+}
+```
+
+**Advantages**:
+
+- Loop updates in one line
+- More compact than while loop
+- Still readable
+
+### Style 3: For Loop with Initialization (Self-Contained)
+
+```cpp
+int nChars = strlen(text);
+
+for (char *pStart = text, *pEnd = text + nChars - 1;
+     pStart < pEnd;
+     pStart++, pEnd--) {
+    char ch = *pStart;
+    *pStart = *pEnd;
+    *pEnd = ch;
+}
+```
+
+**Advantages**:
+
+- All initialization in loop header
+- No need for setup code before loop
+- Self-contained and clean
+- Common in interviews
+
+### Style 4: Modern C++ with std::swap (Most Idiomatic)
+
+```cpp
+#include <algorithm>
+
+int nChars = strlen(text);
+
+for (char *left = text, *right = text + nChars - 1;
+     left < right;
+     left++, right--) {
+    std::swap(*left, *right);
+}
+```
+
+**Advantages**:
+
+- Uses standard library function
+- Clearer intent (swap vs manual assignment)
+- Modern C++ style
+- Preferred in production code
+- More efficient (compiler optimizations)
+
+## Comparison Table
+
+| Style            | Clarity   | Compactness | Best Use          |
+| ---------------- | --------- | ----------- | ----------------- |
+| While            | Excellent | Low         | Learning          |
+| For with updates | Good      | Medium      | Interviews        |
+| For with init    | Good      | High        | Professional code |
+| std::swap        | Excellent | High        | Production        |
+
+**All four approaches**:
+
+- Have O(n) time complexity
+- Have O(1) space complexity
+- Produce identical results
+
+## Choosing the Right Style
+
+- **Learning phase**: Use Style 1 (while loop)
+- **Interviews**: Use Style 2 or 3 (shows good C++ syntax knowledge)
+- **Production code**: Use Style 4 (standard library, maintainable)
+- **Teaching others**: Use Style 1 or 3 (clear logic flow)
+
 ## Real-World Applications
 
 1. **String validation**: Check if string is palindrome

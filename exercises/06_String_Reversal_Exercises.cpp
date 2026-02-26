@@ -420,6 +420,101 @@ void exercise13()
 }
 
 //============================================================================
+// EXERCISE 14: Different Implementation Styles
+//============================================================================
+void exercise14()
+{
+    cout << "\n========== EXERCISE 14: Implementation Styles ==========" << endl;
+
+    // STYLE 1: While Loop (Best for learning)
+    cout << "\nStyle 1: WHILE LOOP (Most explicit)" << endl;
+    {
+        char text1[] = "hello";
+        cout << "Original: \"" << text1 << "\"" << endl;
+
+        char *pStart = text1;
+        char *pEnd = text1 + strlen(text1) - 1;
+
+        while (pStart < pEnd)
+        {
+            char ch = *pStart;
+            *pStart = *pEnd;
+            *pEnd = ch;
+            pStart++;
+            pEnd--;
+        }
+
+        cout << "Reversed: \"" << text1 << "\"" << endl;
+    }
+
+    // STYLE 2: For Loop with Updates
+    cout << "\nStyle 2: FOR LOOP WITH POINTER UPDATES (Compact)" << endl;
+    {
+        char text2[] = "world";
+        cout << "Original: \"" << text2 << "\"" << endl;
+
+        char *pStart = text2;
+        char *pEnd = text2 + strlen(text2) - 1;
+
+        for (; pStart < pEnd; pStart++, pEnd--)
+        {
+            char ch = *pStart;
+            *pStart = *pEnd;
+            *pEnd = ch;
+        }
+
+        cout << "Reversed: \"" << text2 << "\"" << endl;
+    }
+
+    // STYLE 3: For Loop with Initialization
+    cout << "\nStyle 3: FOR LOOP WITH INITIALIZATION (Self-contained)" << endl;
+    {
+        char text3[] = "C++";
+        cout << "Original: \"" << text3 << "\"" << endl;
+
+        int nChars = strlen(text3);
+        for (char *pStart = text3, *pEnd = text3 + nChars - 1;
+             pStart < pEnd;
+             pStart++, pEnd--)
+        {
+            char ch = *pStart;
+            *pStart = *pEnd;
+            *pEnd = ch;
+        }
+
+        cout << "Reversed: \"" << text3 << "\"" << endl;
+    }
+
+    // STYLE 4: Using std::swap
+    cout << "\nStyle 4: STD::SWAP (Modern C++ - Most idiomatic)" << endl;
+    {
+        char text4[] = "code";
+        cout << "Original: \"" << text4 << "\"" << endl;
+
+        int nChars = strlen(text4);
+        for (char *left = text4, *right = text4 + nChars - 1;
+             left < right;
+             left++, right--)
+        {
+            swap(*left, *right);
+        }
+
+        cout << "Reversed: \"" << text4 << "\"" << endl;
+    }
+
+    cout << "\n--- COMPARISON ---" << endl;
+    cout << "All four styles:" << endl;
+    cout << "  ✓ Have O(n) time complexity" << endl;
+    cout << "  ✓ Have O(1) space complexity" << endl;
+    cout << "  ✓ Produce identical results" << endl;
+    cout << "  ✓ Swap characters correctly" << endl;
+    cout << "\nChoose based on context:" << endl;
+    cout << "  • Learning: Style 1 (while loop)" << endl;
+    cout << "  • Interviews: Style 2 or 3" << endl;
+    cout << "  • Production: Style 4 (std::swap)" << endl;
+}
+
+//============================================================================
 // MAIN FUNCTION - Run All Exercises
 //============================================================================
 int main()
@@ -442,6 +537,7 @@ int main()
     // exercise11();
     // exercise12();
     // exercise13();
+    // exercise14();
 
     cout << "\n============================================" << endl;
     cout << "Great job practicing string reversal!" << endl;
