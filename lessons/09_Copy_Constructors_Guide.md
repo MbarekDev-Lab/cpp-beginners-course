@@ -22,6 +22,7 @@ ClassName(const ClassName& other) {
 ```
 
 **Key points:**
+
 - `const` - promises not to modify the original
 - `&` - parameter is a reference (efficient, avoids recursion)
 - `other` - the object being copied from
@@ -29,18 +30,21 @@ ClassName(const ClassName& other) {
 ## When is Copy Constructor Called?
 
 ### 1. Direct Assignment
+
 ```cpp
 Animal animal1;
 Animal animal2 = animal1;  // Copy constructor called
 ```
 
 ### 2. Explicit Constructor Call
+
 ```cpp
 Animal animal1;
 Animal animal2(animal1);  // Copy constructor called
 ```
 
 ### 3. Function Parameters (By Value)
+
 ```cpp
 void process(Animal a) {  // Calls copy constructor
     // a is a copy of the argument
@@ -51,6 +55,7 @@ process(animal1);  // Copy constructor called here
 ```
 
 ### 4. Return Values
+
 ```cpp
 Animal getAnimal(Animal original) {
     return original;  // May call copy constructor
@@ -63,24 +68,25 @@ Animal getAnimal(Animal original) {
 class Animal {
 private:
     string name;
-    
+
 public:
     // Default constructor
     Animal() {
         cout << "Animal created." << endl;
     }
-    
+
     // Copy constructor
     Animal(const Animal& other) : name(other.name) {
         cout << "Animal created by copying." << endl;
     }
-    
+
     void setName(string n) { name = n; }
     void speak() const { cout << name << endl; }
 };
 ```
 
 Usage:
+
 ```cpp
 Animal animal1;
 animal1.setName("Freddy");
@@ -112,13 +118,14 @@ Simple obj2 = obj1;  // Memberwise copy
 ## Shallow vs Deep Copy
 
 ### Shallow Copy (Default)
+
 Both objects point to the **same memory**.
 
 ```cpp
 class Dangerous {
 public:
     int *data;
-    
+
     Dangerous(int size) {
         data = new int[size];
     }
@@ -132,6 +139,7 @@ Dangerous obj2 = obj1;  // Shallow copy - both point to same memory!
 ```
 
 ### Deep Copy (Custom)
+
 Each object has its **own copy of data**.
 
 ```cpp
@@ -139,11 +147,11 @@ class Safe {
 public:
     int *data;
     int size;
-    
+
     Safe(int sz) : size(sz) {
         data = new int[size];
     }
-    
+
     // Deep copy constructor
     Safe(const Safe& other) : size(other.size) {
         data = new int[size];  // Allocate new memory
@@ -151,7 +159,7 @@ public:
             data[i] = other.data[i];  // Copy data
         }
     }
-    
+
     ~Safe() {
         delete[] data;
     }
@@ -163,6 +171,7 @@ Safe obj2 = obj1;  // Deep copy - separate memory
 ```
 
 **When to use:**
+
 - Shallow copy: Simple objects with value members only
 - Deep copy: Objects managing dynamic memory (pointers)
 
@@ -171,6 +180,7 @@ Safe obj2 = obj1;  // Deep copy - separate memory
 These are different operations:
 
 ### Copy Constructor (Initialization)
+
 ```cpp
 Person p1;
 p1.name = "Alice";
@@ -179,6 +189,7 @@ Person p2 = p1;  // NEW object created - calls copy constructor
 ```
 
 ### Assignment Operator
+
 ```cpp
 Person p1;
 p1.name = "Alice";
@@ -187,12 +198,12 @@ Person p2;
 p2 = p1;  // EXISTING object updated - calls assignment operator
 ```
 
-| Aspect | Copy Constructor | Assignment Operator |
-|--------|------------------|-------------------|
-| **When** | During object creation | After object exists |
-| **Call** | `ClassName obj2 = obj1;` | `obj2 = obj1;` |
-| **Initializes** | Member variables | Existing members |
-| **Signature** | `ClassName(const ClassName&)` | `ClassName& operator=(const ClassName&)` |
+| Aspect          | Copy Constructor              | Assignment Operator                      |
+| --------------- | ----------------------------- | ---------------------------------------- |
+| **When**        | During object creation        | After object exists                      |
+| **Call**        | `ClassName obj2 = obj1;`      | `obj2 = obj1;`                           |
+| **Initializes** | Member variables              | Existing members                         |
+| **Signature**   | `ClassName(const ClassName&)` | `ClassName& operator=(const ClassName&)` |
 
 ## Member Initializer List
 
@@ -213,6 +224,7 @@ Book(const Book& other) {
 ```
 
 **Benefits:**
+
 - ✓ More efficient (direct initialization vs copy)
 - ✓ Required for const members
 - ✓ Required for reference members
@@ -231,6 +243,7 @@ Animal(Animal& other) { ... }  // Cannot copy const objects!
 ```
 
 Why const?
+
 - Allows copying from constant objects
 - Promises we won't modify the original
 - Allows temporary objects to be copied
@@ -244,14 +257,14 @@ using namespace std;
 class Animal {
 private:
     string name;
-    
+
 public:
     Animal() { cout << "Animal created" << endl; }
-    
+
     Animal(const Animal& other) : name(other.name) {
         cout << "Animal copied" << endl;
     }
-    
+
     void setName(string n) { name = n; }
     void display() const { cout << "Name: " << name << endl; }
 };
@@ -259,21 +272,22 @@ public:
 int main() {
     Animal a1;
     a1.setName("Freddy");
-    
+
     cout << "Creating a2 from a1:" << endl;
     Animal a2 = a1;  // Copy constructor called
-    
+
     a2.setName("Bob");
-    
+
     cout << "\nBoth animals:" << endl;
     a1.display();  // Freddy
     a2.display();  // Bob
-    
+
     return 0;
 }
 ```
 
 Output:
+
 ```
 Animal created
 Creating a2 from a1:
@@ -286,6 +300,7 @@ Name: Bob
 ## Common Mistakes
 
 ### Mistake 1: Non-Const Reference
+
 ```cpp
 // WRONG
 Animal(Animal& other) { ... }  // Cannot accept const
@@ -296,6 +311,7 @@ Animal a3 = a2;  // ERROR - cannot call non-const copy constructor
 ```
 
 ### Mistake 2: Pass by Value (Infinite Recursion)
+
 ```cpp
 // WRONG - infinite recursion!
 Animal(Animal other) {
@@ -307,6 +323,7 @@ Animal(const Animal& other) { ... }
 ```
 
 ### Mistake 3: Forgetting Deep Copy
+
 ```cpp
 // WRONG for dynamic memory
 class Array {
@@ -322,7 +339,7 @@ Array a2 = a1;  // Both point to same memory!
 class Array {
 public:
     int *data;
-    
+
     Array(const Array& other) {
         data = new int[10];  // New memory
         memcpy(data, other.data, 10);  // Copy values
@@ -331,6 +348,7 @@ public:
 ```
 
 ### Mistake 4: Modifying Original in Copy
+
 ```cpp
 // WRONG
 string name;
@@ -343,6 +361,7 @@ Animal(const Animal& other) {
 
 **Rule of Three** (or Five in modern C++):
 If you define:
+
 1. Destructor
 2. Copy constructor
 3. Assignment operator
@@ -353,17 +372,17 @@ You should typically define all three (or let compiler generate all).
 class Resource {
 private:
     int *data;
-    
+
 public:
     // Constructor
     Resource(int size) { data = new int[size]; }
-    
+
     // Destructor (1)
     ~Resource() { delete[] data; }
-    
+
     // Copy constructor (2)
     Resource(const Resource& other) { /* ... */ }
-    
+
     // Assignment operator (3)
     Resource& operator=(const Resource& other) { /* ... */ }
 };
@@ -371,13 +390,13 @@ public:
 
 ## Quick Reference
 
-| Scenario | Code | Constructor Called |
-|----------|------|-------------------|
-| Initialize from existing | `Animal a2 = a1;` | Copy |
-| Explicit call | `Animal a2(a1);` | Copy |
-| Function parameter | `void f(Animal a)` | Copy |
-| Return value | `return a;` | Copy (possibly optimized) |
-| Assignment | `a2 = a1;` | Assignment operator |
+| Scenario                 | Code               | Constructor Called        |
+| ------------------------ | ------------------ | ------------------------- |
+| Initialize from existing | `Animal a2 = a1;`  | Copy                      |
+| Explicit call            | `Animal a2(a1);`   | Copy                      |
+| Function parameter       | `void f(Animal a)` | Copy                      |
+| Return value             | `return a;`        | Copy (possibly optimized) |
+| Assignment               | `a2 = a1;`         | Assignment operator       |
 
 ## Summary
 

@@ -403,3 +403,172 @@ int main()
 // • Mark methods const if they don't modify state
 // • Use const references in parameters for efficiency
 //============================================================================
+
+/*
+
+/Users/benraiss/CLionProjects/learnCpp/cmake-build-debug/learnCpp
+
+============================================
+C++ CONST KEYWORD - COMPLETE GUIDE
+============================================
+
+========== SECTION 1: Const Variables ==========
+Variables that cannot be changed after initialization
+const double PI = 3.14159;
+PI value: 3.14159
+
+Advantages of const variables:
+  ✓ Prevents accidental modification
+  ✓ Documents intent (this value doesn't change)
+  ✓ Compiler can optimize
+  ✓ Used for constants and magic numbers
+
+========== SECTION 2: Const Pointers vs Pointers to Const ==========
+CASE 1: Const Pointer (int * const)
+Pointer CANNOT CHANGE, but data CAN change
+int * const pValue = &value;
+*pValue = 8
+After *pValue = 100: 100
+
+CASE 2: Pointer to Const (const int *)
+Pointer CAN CHANGE, but data CANNOT change
+const int *pNumber = &value;
+*pNumber = 100
+After pNumber = &number: 11
+
+CASE 3: Const Pointer to Const (const int * const)
+NEITHER pointer NOR data can change
+const int * const pBoth = &value;
+*pBoth = 100
+
+========== SECTION 3: Reading Pointer Declarations ==========
+Read pointer declarations RIGHT-TO-LEFT!
+
+1. 'int *ptr':
+   Right-to-left: ptr is a pointer to int
+   Can change pointer ✓, Can change data ✓
+
+2. 'int * const ptr':
+   Right-to-left: ptr is a const pointer to int
+   Can change pointer ✗, Can change data ✓
+
+3. 'const int *ptr':
+   Right-to-left: ptr is a pointer to const int
+   Can change pointer ✓, Can change data ✗
+
+4. 'const int * const ptr':
+   Right-to-left: ptr is a const pointer to const int
+   Can change pointer ✗, Can change data ✗
+
+Mnemonic: Read from right to left, 'const' applies to left word
+
+========== SECTION 4: Const Methods ==========
+Methods marked const cannot modify object state
+Animal created and named 'Freddy'
+Calling const method speak():
+My name is: Freddy
+
+Const method 'speak()':
+  ✓ Can read member variables
+  ✗ Cannot modify member variables
+  ✓ Signals to users: this doesn't change state
+  ✓ Can be called on const objects
+
+Why use const methods?
+  - Documents intent (read-only)
+  - Prevents accidental modifications
+  - Works with const objects
+  - Compiler enforces constraints
+
+========== SECTION 5: Practical Const Pointer Usage ==========
+Creating pointers for different purposes:
+
+int *ptr1 = &value;
+  Purpose: General use, can change pointer and data
+  ✓ Can reassign pointer: ptr1 = &number
+  ✓ Can modify data: *ptr1 = 50
+
+const int *ptr2 = &value;
+  Purpose: Read-only access to data
+  ✓ Can reassign pointer: ptr2 = &number
+  ✗ Cannot modify data
+
+int * const ptr3 = &value;
+  Purpose: Fixed address, but modifiable data
+  ✓ Can modify data: *ptr3 = 100
+  ✗ Cannot reassign pointer
+
+========== SECTION 6: Const in Function Parameters ==========
+Function: void readValue(const int *ptr)
+  Signals: This function will not modify data
+  Reading: 42
+  value is still: 42
+
+Function: void modifyValue(int *ptr)
+  Signals: This function may modify data
+  Before: 42
+  After: 999
+  value is now: 999
+
+Best Practice:
+  • Use const int *ptr for read-only
+  • Use int *ptr only when you need to modify
+  • This documents intent to callers
+
+========== SECTION 7: Const vs #define ==========
+Using const (PREFERRED):
+  const double PI = 3.14159;
+  ✓ Has type (double)
+  ✓ Has scope (local or global)
+  ✓ Debuggable
+  ✓ Memory efficient
+  ✓ Can use with pointers
+
+Using #define (old C style):
+  #define PI 3.141592653589793
+  ✗ No type
+  ✗ No scope
+  ✗ Harder to debug
+  ✓ No memory cost (preprocessor replacement)
+
+Modern C++ Recommendation:
+  Use 'const' instead of '#define'
+  Type safety and scoping are important!
+
+========== SECTION 8: Const Usage Summary ==========
+1. CONST VARIABLES:
+   const double PI = 3.14;
+   Use: For values that don't change
+
+2. CONST POINTERS:
+   int * const ptr = &value;
+   Use: Pointer remains fixed, data can change
+   Common in: Array iteration (fixed bounds)
+
+3. POINTERS TO CONST:
+   const int *ptr = &value;
+   Use: Pointer can change, data is read-only
+   Common in: Function parameters (no modification)
+
+4. CONST METHODS:
+   void display() const { ... }
+   Use: Method doesn't modify object
+   Common in: Getters, display functions
+
+5. READING DECLARATIONS:
+   Always read right-to-left:
+   int * const => const pointer to int
+   const int * => pointer to const int
+
+Benefits of const:
+  • Self-documenting code (intent)
+  • Compiler catches mistakes
+  • Enables optimizations
+  • Safer, more maintainable code
+
+============================================
+Const Keyword Mastered!
+============================================
+
+
+*/
