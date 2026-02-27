@@ -426,3 +426,78 @@ int main()
 
     return 0;
 }
+
+/*
+/Users/benraiss/CLionProjects/learnCpp/cmake-build-debug/learnCpp
+=====================================================
+LESSON 10: New and Delete Operators
+Dynamic Memory Allocation in C++
+=====================================================
+
+=== Example 1.1: Basic New and Delete ===
+Animal created.
+My name is: Freddy
+Destructor called
+
+=== Example 1.2: Multiple Heap Objects ===
+Animal created.
+My name is: Rex
+Destructor called
+Animal created.
+My name is: Tweety
+Destructor called
+
+=== Example 2.1: Pointer Size ===
+Animal created.
+sizeof(pAnimal): 8 bytes
+All pointers on 64-bit system are typically 8 bytes
+Destructor called
+
+=== Example 3.1: New with Primitive Types ===
+Heap integer value: 42
+Heap double value: 19.99
+Heap string: Hello from heap!
+
+=== Example 4.1: New Array ===
+10 20 30 40 50
+
+=== Example 5.2: Proper Cleanup ===
+Animal created.
+Destructor called
+Animal created.
+Destructor called
+
+=== Example 6.1: Constructor and Destructor Calls ===
+Creating dog with new...
+Dog constructor called for: Buddy
+Buddy says: Woof! Woof!
+Deleting dog...
+Dog destructor called for: Buddy
+
+=== Example 7.1: new vs malloc ===
+Dog constructor called for: Max
+Max says: Woof! Woof!
+Dog destructor called for: Max
+Always use new/delete for C++ objects!
+
+=== Example 8.1: Best Practices ===
+Dog constructor called for: Luna
+Luna says: Woof! Woof!
+Dog destructor called for: Luna
+Dog pointer is null - object was deleted
+
+=====================================================
+KEY TAKEAWAYS:
+1. Use 'new' to allocate memory, 'delete' to free it
+2. Always match new with delete, new[] with delete[]
+3. Constructors are called with new, destructors with delete
+4. Forgetting delete causes memory leaks
+5. Prefer new/delete over malloc/free for C++ objects
+=====================================================
+
+Process finished with exit code 0
+
+
+
+
+*/
