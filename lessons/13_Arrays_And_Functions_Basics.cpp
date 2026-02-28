@@ -462,3 +462,74 @@ int main()
 
     return 0;
 }
+/*
+
+/Users/benraiss/CLionProjects/learnCpp/cmake-build-debug/learnCpp
+=====================================================
+LESSON 13: Arrays and Functions
+Passing, Modifying, and Working with Arrays
+=====================================================
+
+=== Example 1.1: Array Decay ===
+Stack array size: 20
+Element 0: 10
+Element 2: 30
+
+=== Example 2.1: Array with Size Parameter ===
+Array contents: 5 10 15 20
+Sum: 50
+
+=== Example 2.2: Modifying Array in Function ===
+Before: Array contents: 1 2 3
+After:  Array contents: 2 3 4
+
+=== Example 3.1: Array References ===
+Before: Array contents: 1 2 3 4 5
+Processing array of exactly 5 elements:
+After:  Array contents: 2 4 6 8 10
+
+=== Example 4.1: Arrays of Objects ===
+Animal created: Dog
+Animal created: Cat
+Animal created: Bird
+All animals:
+I am: Dog
+I am: Cat
+I am: Bird
+Animal destroyed: Bird
+Animal destroyed: Cat
+Animal destroyed: Dog
+
+=== Example 5.1: Parameter Equivalence ===
+Using arr[] notation
+Using *arr notation
+Size hint ignored
+
+=== Example 6.1: Heap Arrays and Functions ===
+Heap array: Array contents: 10 20 30 40 50
+
+=== Example 7.1: Pointer Arithmetic in Functions ===
+Range: 10 20 30 40 50
+Range: 20 30 40
+
+=== Example 8.1: Practical Patterns ===
+Finding 45: index 3
+Even count: 3
+Maximum: 45
+Average: 22.5
+
+=====================================================
+KEY TAKEAWAYS:
+1. Arrays decay to pointers when passed to functions
+2. Always pass array size as a parameter
+3. Array notation arr[] is identical to pointer *arr
+4. Functions can modify arrays (passing by reference)
+5. Size information is lost - you control bounds
+6. Same rules apply to heap and stack arrays
+7. Common patterns: search, filter, transform, aggregate
+=====================================================
+
+Process finished with exit code 0
+
+
+*/
