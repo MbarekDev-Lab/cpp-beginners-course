@@ -30,30 +30,25 @@ using namespace std;
 // HINT: Use constructors/destructors with cout statements
 //============================================================================
 
-class Person
-{
+class Person {
 private:
     string name;
     int age;
-
+    
 public:
-    Person(string n = "Unknown", int a = 0) : name(n), age(a)
-    {
+    Person(string n = "Unknown", int a = 0) : name(n), age(a) {
         cout << "Person created: " << name << endl;
     }
-
-    Person(const Person &other) : name(other.name), age(other.age)
-    {
+    
+    Person(const Person& other) : name(other.name), age(other.age) {
         cout << "Person copied: " << name << endl;
     }
-
-    ~Person()
-    {
+    
+    ~Person() {
         cout << "Person destroyed: " << name << endl;
     }
-
-    void display() const
-    {
+    
+    void display() const {
         cout << name << " is " << age << " years old" << endl;
     }
 };
@@ -64,15 +59,14 @@ public:
 //     return p;  // Watch copy constructor!
 // }
 
-void exercise_1()
-{
+void exercise_1() {
     cout << "\n=== EXERCISE 1: Return Object By Value ===" << endl;
-
+    
     // TODO: Call the function and observe output
     // Person p = returnPersonByValue("Alice", 30);
     // p.display();
     // TODO: Explain why copy constructor was called
-
+    
     // SOLUTION:
     // TODO: See hints above
 }
@@ -89,8 +83,7 @@ void exercise_1()
 // HINT: All return by value - caller gets independent copies
 //============================================================================
 
-int returnIntValue()
-{
+int returnIntValue() {
     int x = 42;
     return x;
 }
@@ -98,15 +91,14 @@ int returnIntValue()
 // TODO: Add returnPersonValue() function
 // TODO: Add returnStringValue() function
 
-void exercise_2()
-{
+void exercise_2() {
     cout << "\n=== EXERCISE 2: Return Multiple Objects ===" << endl;
-
+    
     // TODO: Call all three functions
     // int x = returnIntValue();
     // Person p = returnPersonValue();
     // string s = returnStringValue();
-
+    
     // SOLUTION:
     // See exercise 1 for Person example
 }
@@ -130,21 +122,20 @@ void exercise_2()
 //     return p;  // Caller owns this!
 // }
 
-void exercise_3()
-{
+void exercise_3() {
     cout << "\n=== EXERCISE 3: Return by Pointer - Heap Objects ===" << endl;
-
+    
     // TODO: Allocate person
     // TODO: Use person
     // TODO: Delete person
     // TODO: Set to nullptr
-
+    
     // SOLUTION:
     // Person *p = allocatePerson("Bob", 25);
     // p->display();
     // delete p;
     // p = nullptr;
-
+    
     // TODO: Explain when constructor and destructor were called
 }
 
@@ -164,8 +155,7 @@ void exercise_3()
 // HINT: Pay attention to the console output order
 //============================================================================
 
-Person returnPersonByValue(string name, int age)
-{
+Person returnPersonByValue(string name, int age) {
     // TODO: Implement
     return Person(name, age);
 }
@@ -175,21 +165,20 @@ Person returnPersonByValue(string name, int age)
 //     return new Person(name, age);
 // }
 
-void exercise_4()
-{
+void exercise_4() {
     cout << "\n=== EXERCISE 4: Compare Value vs Pointer Returns ===" << endl;
-
+    
     cout << "\n--- Return by Value ---" << endl;
     // TODO: Call returnPersonByValue and observe output
     // Person p1 = returnPersonByValue("Alice", 30);
     // p1.display();
-
+    
     cout << "\n--- Return by Pointer ---" << endl;
     // TODO: Call allocatePersonPointer, use, and delete
     // Person *p2 = allocatePersonPointer("Bob", 25);
     // p2->display();
     // delete p2;
-
+    
     cout << "\n--- End of exercise ---" << endl;
     // TODO: Explain the differences in output
 }
@@ -215,20 +204,19 @@ void exercise_4()
 //     return p;
 // }
 
-void exercise_5()
-{
+void exercise_5() {
     cout << "\n=== EXERCISE 5: Factory Function Pattern ===" << endl;
-
+    
     // TODO: Create multiple people using factory
     // Person *student = createPersonByRole("student", "Tom");
     // Person *teacher = createPersonByRole("teacher", "Jane");
     // Person *admin = createPersonByRole("admin", "Bob");
-
+    
     // TODO: Use all three
     // student->display();
     // teacher->display();
     // admin->display();
-
+    
     // TODO: Delete all three
     // delete student;
     // delete teacher;
@@ -247,22 +235,20 @@ void exercise_5()
 //       Only safe with parameters or static objects
 //============================================================================
 
-const Person &returnParameterReference(const Person &p)
-{
+const Person& returnParameterReference(const Person& p) {
     // TODO: Return the parameter
     return p;
 }
 
-void exercise_6()
-{
+void exercise_6() {
     cout << "\n=== EXERCISE 6: Return Reference ===" << endl;
-
+    
     Person person("Charlie", 35);
-
+    
     // TODO: Call function and get reference
     // const Person& ref = returnParameterReference(person);
     // ref.display();
-
+    
     // TODO: Note: No copy made! Same object accessed through reference
     // person.display();  // Same person
     // ref.display();     // Same person
@@ -284,22 +270,20 @@ void exercise_6()
 //       Set to nullptr after delete
 //============================================================================
 
-void exercise_7_wrong()
-{
+void exercise_7_wrong() {
     Person *p = new Person("Tom", 25);
     p->display();
     // TODO: Add delete here!
     // TODO: Add p = nullptr;
 }
 
-void exercise_7()
-{
+void exercise_7() {
     cout << "\n=== EXERCISE 7: Memory Leak Detection ===" << endl;
-
+    
     Person *p = new Person("Tom", 25);
     p->display();
-    delete p;    // Fix: Add delete
-    p = nullptr; // Fix: Set to nullptr
+    delete p;      // Fix: Add delete
+    p = nullptr;   // Fix: Set to nullptr
 }
 
 //============================================================================
@@ -320,8 +304,7 @@ void exercise_7()
 //============================================================================
 
 // BAD: No documentation
-Person *getPerson_Bad()
-{
+Person* getPerson_Bad() {
     return new Person("Unknown", 0);
 }
 
@@ -333,21 +316,19 @@ Person *getPerson_Bad()
 //          p->display();
 //          delete p;
 //          p = nullptr;
-Person *getPerson_Good()
-{
+Person* getPerson_Good() {
     return new Person("Unknown", 0);
 }
 
-void exercise_8()
-{
+void exercise_8() {
     cout << "\n=== EXERCISE 8: Ownership Documentation ===" << endl;
-
+    
     // Use the well-documented version
     Person *p = getPerson_Good();
     p->display();
     delete p;
     p = nullptr;
-
+    
     cout << "Good documentation helps prevent mistakes!" << endl;
 }
 
@@ -369,49 +350,42 @@ void exercise_8()
 // HINT: By pointer avoids copy overhead (new/copy constructor)
 //============================================================================
 
-class LargeObject
-{
+class LargeObject {
 private:
-    int data[10000]; // Large array - 40KB
-
+    int data[10000];  // Large array - 40KB
+    
 public:
-    LargeObject()
-    {
+    LargeObject() {
         cout << "LargeObject created (40KB)" << endl;
     }
-
-    LargeObject(const LargeObject &other)
-    {
+    
+    LargeObject(const LargeObject& other) {
         cout << "LargeObject copied - 40KB copied!" << endl;
     }
-
-    ~LargeObject()
-    {
+    
+    ~LargeObject() {
         cout << "LargeObject destroyed" << endl;
     }
 };
 
-LargeObject createLargeByValue()
-{
-    return LargeObject(); // Copy happens here!
+LargeObject createLargeByValue() {
+    return LargeObject();  // Copy happens here!
 }
 
-LargeObject *allocateLargePointer()
-{
-    return new LargeObject(); // No copy!
+LargeObject* allocateLargePointer() {
+    return new LargeObject();  // No copy!
 }
 
-void exercise_9()
-{
+void exercise_9() {
     cout << "\n=== EXERCISE 9: Pointer vs Copy Performance ===" << endl;
-
+    
     cout << "\nBy value (copy):" << endl;
     // LargeObject obj1 = createLargeByValue();
-
+    
     cout << "\nBy pointer (no copy):" << endl;
     // LargeObject *p = allocateLargePointer();
     // delete p;
-
+    
     cout << "\nFor large objects, pointer is more efficient!" << endl;
 }
 
@@ -438,37 +412,30 @@ void exercise_9()
 //       Caller must delete each one
 //============================================================================
 
-Person *createPersonByType(string type)
-{
+Person* createPersonByType(string type) {
     // TODO: Implement based on type
-    if (type == "student")
-    {
+    if (type == "student") {
         return new Person("Student", 20);
-    }
-    else if (type == "teacher")
-    {
+    } else if (type == "teacher") {
         return new Person("Teacher", 40);
-    }
-    else
-    {
+    } else {
         return new Person("Unknown", 0);
     }
 }
 
-void exercise_10()
-{
+void exercise_10() {
     cout << "\n=== EXERCISE 10: Multiple Returns from Same Function ===" << endl;
-
+    
     // TODO: Create multiple objects with different types
     Person *p1 = createPersonByType("student");
     Person *p2 = createPersonByType("teacher");
     Person *p3 = createPersonByType("admin");
-
+    
     // TODO: Use them
     p1->display();
     p2->display();
     p3->display();
-
+    
     // TODO: Delete all
     delete p1;
     delete p2;
@@ -494,27 +461,24 @@ void exercise_10()
 // HINT: Array of pointers: Person* people[5];
 //============================================================================
 
-void exercise_11()
-{
+void exercise_11() {
     cout << "\n=== EXERCISE 11: Chaining Returns ===" << endl;
-
+    
     // TODO: Create array of 3 people
     Person *people[3];
-
+    
     // TODO: Allocate each one
     people[0] = createPersonByType("student");
     people[1] = createPersonByType("teacher");
     people[2] = createPersonByType("admin");
-
+    
     // TODO: Display all
-    for (int i = 0; i < 3; i++)
-    {
+    for (int i = 0; i < 3; i++) {
         people[i]->display();
     }
-
+    
     // TODO: Delete all and set to nullptr
-    for (int i = 0; i < 3; i++)
-    {
+    for (int i = 0; i < 3; i++) {
         delete people[i];
         people[i] = nullptr;
     }
@@ -535,22 +499,21 @@ void exercise_11()
 //       Automatic cleanup prevents leaks
 //============================================================================
 
-void exercise_12()
-{
+void exercise_12() {
     cout << "\n=== EXERCISE 12: Smart Pointer Introduction ===" << endl;
-
+    
     // TODO: Use unique_ptr instead of new/delete
     // unique_ptr<Person> p = make_unique<Person>("Bob", 30);
     // p->display();
     // // No delete needed! Automatic cleanup
-
+    
     // TODO: Create multiple pointers
     // unique_ptr<Person> p1 = make_unique<Person>("A", 20);
     // unique_ptr<Person> p2 = make_unique<Person>("B", 30);
     // p1->display();
     // p2->display();
     // // Both deleted automatically at end of scope
-
+    
     cout << "Smart pointers eliminate manual cleanup!" << endl;
     cout << "Use unique_ptr in modern C++" << endl;
 }
@@ -571,36 +534,33 @@ void exercise_12()
 // HINT: Combine exercises 5, 10, 11 into one complete program
 //============================================================================
 
-void exercise_13()
-{
+void exercise_13() {
     cout << "\n=== EXERCISE 13: Complete Program - Object Management ===" << endl;
-
+    
     const int COUNT = 5;
     Person *people[COUNT];
-
+    
     // Create various people
     people[0] = createPersonByType("student");
     people[1] = createPersonByType("teacher");
     people[2] = createPersonByType("student");
     people[3] = createPersonByType("admin");
     people[4] = createPersonByType("teacher");
-
+    
     // Display all
     cout << "\nAll people:" << endl;
-    for (int i = 0; i < COUNT; i++)
-    {
+    for (int i = 0; i < COUNT; i++) {
         cout << (i + 1) << ". ";
         people[i]->display();
     }
-
+    
     // Clean up all
     cout << "\nCleaning up..." << endl;
-    for (int i = 0; i < COUNT; i++)
-    {
+    for (int i = 0; i < COUNT; i++) {
         delete people[i];
         people[i] = nullptr;
     }
-
+    
     cout << "All objects deleted successfully!" << endl;
 }
 
@@ -608,14 +568,14 @@ void exercise_13()
 // MAIN FUNCTION - Run Selected Exercises
 //============================================================================
 
-int main()
-{
+int main() {
+    
     cout << "=====================================================" << endl;
     cout << "LESSON 11 EXERCISES: Returning Objects From Methods" << endl;
     cout << "=====================================================" << endl;
 
     // Uncomment the exercises you want to test:
-
+    
     // exercise_1();
     // exercise_2();
     exercise_3();
@@ -650,6 +610,8 @@ int main()
 
     return 0;
 }
+
+
 
 /*
 
