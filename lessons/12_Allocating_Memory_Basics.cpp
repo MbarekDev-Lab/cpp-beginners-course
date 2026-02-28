@@ -479,3 +479,142 @@ int main()
 
     return 0;
 }
+
+/*
+/Users/benraiss/CLionProjects/learnCpp/cmake-build-debug/learnCpp
+=====================================================
+LESSON 12: Allocating Memory
+Arrays, Buffers, and Dynamic Sizing
+=====================================================
+
+=== Example 1.1: Array Allocation ===
+Animal created.
+Animal created.
+Animal created.
+Animal created.
+Animal created.
+
+Now setting names...
+
+All animals:
+My name is: Rex
+My name is: Buddy
+My name is: Max
+My name is: Charlie
+My name is: George
+
+Deleting array...
+Destructor called
+Destructor called
+Destructor called
+Destructor called
+Destructor called
+
+=== Example 1.2: Array Access Patterns ===
+Animal created.
+Animal created.
+Animal created.
+Animal created.
+Animal created.
+Animal created.
+Animal created.
+Animal created.
+Animal created.
+Animal created.
+My name is: George
+My name is: George
+Destructor called
+Destructor called
+Destructor called
+Destructor called
+Destructor called
+Destructor called
+Destructor called
+Destructor called
+Destructor called
+Destructor called
+
+=== Example 2.1: Dynamic Size (Auto) ===
+Animal created.
+Animal created.
+Animal created.
+
+Allocated 3 animals
+Destructor called
+Destructor called
+Destructor called
+
+=== Example 3.1: Raw Memory Allocation ===
+Allocated 1000 bytes of memory
+First 10 bytes: ABCDEFGHIJ
+
+=== Example 3.2: Integer Array Allocation ===
+Numbers: 10 20 30 40 50
+
+=== Example 4.1: Memory Layout ===
+Using index notation:
+pArray[0] = 10
+pArray[2] = 30
+
+Using pointer arithmetic:
+*(pArray + 0) = 10
+*(pArray + 2) = 30
+
+Pointer addresses:
+pArray:   0x101121290
+pArray+1: 0x101121294
+pArray+2: 0x101121298
+Memory is contiguous!
+
+=== Example 5.1: Stack vs Heap ===
+Stack array:
+Stack[0] = 1
+
+Heap array:
+Heap[0] = 4
+
+=== Example 6.1: Character Arrays ===
+Repeated chars: bbbbb
+String from char array: Hi
+
+=== Example 7.1: Allocation Rules ===
+Animal created.
+Animal created.
+Animal created.
+Destructor called
+Destructor called
+Destructor called
+All allocation rules followed!
+
+=== Example 8.1: Practical Buffer Allocation ===
+Allocating buffer for 256 bytes
+Buffer usage complete
+
+=== Example 8.2: Practical Object Array ===
+Animal created.
+Animal created.
+Animal created.
+Our pets:
+My name is: Dog
+My name is: Cat
+My name is: Bird
+Destructor called
+Destructor called
+Destructor called
+
+=====================================================
+KEY TAKEAWAYS:
+1. Use new[] to allocate arrays, delete[] to free them
+2. Array size can be determined at runtime (heap only)
+3. Constructor/destructor called for each array element
+4. Access array elements using index notation: ptr[i]
+5. Memory is contiguous and cache-friendly
+6. Choose stack arrays for fixed, small sizes
+7. Choose heap arrays for dynamic, large sizes
+=====================================================
+
+Process finished with exit code 0
+
+
+
+*/
