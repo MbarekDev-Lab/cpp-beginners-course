@@ -371,3 +371,48 @@ int main()
 
     return 0;
 }
+
+/*
+/Users/benraiss/CLionProjects/learnCpp/cmake-build-debug/learnCpp
+========== C++ Namespaces Fundamentals ==========
+
+--- Scope Resolution (::) ---
+Drawing shape: Square
+Playing sound: music.wav
+Graphics namespace  shape utilities
+Audio namespace - sound utilities
+
+--- Using Namespace Declaration ---
+PI value: 3.14159
+Circle area (r=5): 78.5398
+E value: 2.71828
+Sphere volume (r=3): 113.097
+
+--- Using Declaration (Specific Members) ---
+Distance between points: 5
+
+--- Nested Namespaces ---
+Alice coding in C++
+Bob designing Circuit Design
+Charlie managing campaigns
+Diana coding in Python
+
+--- Namespace Aliases ---
+Eve coding in Java
+Frank designing PCB Design
+
+--- Anonymous Namespace ---
+This is an internal helper function
+Internal counter: 1
+
+--- Real-World Pattern (Modular Application) ---
+Opening file: data.csv
+Reading from: data.csv
+Analyzing data from: data.csv
+Plotting graph in: PNG
+All modules organized in separate namespaces!
+
+========== End of Namespace Demonstrations ==========
+
+Process finished with exit code 0
+*/
