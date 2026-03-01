@@ -371,3 +371,147 @@ int main()
 
     return 0;
 }
+
+
+/*
+
+/Users/benraiss/CLionProjects/learnCpp/cmake-build-debug/learnCpp
+============= Two's Complement - Complete Basics =============
+
+=== SECTION 1: Two's Complement Basics ===
+8-bit signed integer range: -128 to 127
+
+Positive numbers (MSB = 0):
+Value: 42
+Binary: 00101010
+
+Negative numbers (MSB = 1):
+Value: -42
+Binary: 11010110
+
+Zero has single representation:
+Zero: 00000000
+
+=== SECTION 2: Creating Negative Numbers ===
+Original positive value: 5
+Binary: 00000101
+
+Negated value: -5
+Binary: 11111011
+
+Manual two's complement process:
+Step 1 - Flip bits: 11111010
+Step 2 - Add 1: 11111011
+Interpreted as signed: -5
+
+=== SECTION 3: Integer Overflow ===
+Starting value: 127
+Binary: 01111111
+
+After increment:
+New value: -128
+Binary: 10000000
+Result: 127 + 1 = -128 (overflow wraps around)
+
+--- Underflow Example ---
+Starting value: -128
+Binary: 10000000
+
+After decrement:
+New value: 127
+Binary: 01111111
+Result: -128 - 1 = 127 (underflow wraps around)
+
+=== SECTION 4: Sign Extension ===
+char value: -42
+char binary (8-bit): 11010110
+
+int value: -42
+int binary (32-bit): 11111111111111111111111111010110
+
+Notice value is preserved (-42)
+But sign bit extended to all higher bits (highlighted pattern)
+
+=== SECTION 5: Arithmetic in Two's Complement ===
+--- Addition Example ---
+50 + 30 = 80
+Binary: 00110010 + 00011110 = 01010000
+
+--- Mixed Sign Addition ---
+-20 + 50 = 30
+Binary: 11101100 + 00110010 = 00011110
+
+--- Negative Addition ---
+-30 + -40 = -70
+Binary: 11100010 + 11011000 = 10111010
+
+=== SECTION 6: Bitwise Operations ===
+Original value: 42
+Binary: 00101010
+
+--- Bitwise NOT ---
+NOT value: 11010101
+As signed: -43
+
+--- Left Shift (multiply by 2) ---
+Original: 10 = 00001010
+After << 1: 20 = 00010100
+
+--- Right Shift (arithmetic, preserves sign) ---
+Original: -16 = 11110000
+After >> 2: -4 = 11111100
+Note: Sign bit extended (arithmetic shift)
+
+=== SECTION 7: Type Conversion Effects ===
+--- Signed to Larger Type (Sign Extension) ---
+char -1 to int:-1
+If cast to unsigned: 4294967295
+
+--- Unsigned to Larger Type (Zero Extension) ---
+unsigned char 255 to int: 255
+
+--- Same bits, different interpretation ---
+char -1 as unsigned char: 255
+Binary is same, but interpretation differs
+
+=== SECTION 8: Integer Type Ranges ===
+8-bit (char):
+  Min: -128
+  Max: 127
+
+16-bit (short):
+  Min: -32768
+  Max: 32767
+
+32-bit (int):
+  Min: -2147483648
+  Max: 2147483647
+
+64-bit (long long):
+  Min: -9223372036854775808
+  Max: 9223372036854775807
+
+Formula: Range = -2^(n-1) to 2^(n-1) - 1
+
+=== SECTION 9: Practical Examples ===
+--- Example 1: Check if number is negative ---
+-5 is negative
+Also true: 1 (sign bit check)
+
+--- Example 2: Absolute value implementation ---
+Absolute value of -42 = 42
+
+--- Example 3: Toggle sign bit ---
+100 negated: -100
+Binary before: 0000000001100100
+Binary after:  1111111110011100
+
+--- Example 4: Overflow detection ---
+INT_MAX: 2147483647
+After +1: -2147483648 (overflow, wraparound to negative)
+
+============= All Sections Completed =============
+
+Process finished with exit code 0
+
+*/
