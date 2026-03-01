@@ -617,7 +617,7 @@ Withdrawn: $200, New balance: $1300
 Current balance: $1300
 
 --- Getter and Setter Methods ---
-Name: Alice, Age: 20, GPA: 3.8
+Name: Alice, Age: 20, GPA: 3.8 
 Name: Alice, Age: 21, GPA: 3.9
 GPA must be between 0.0 and 4.0
 Name: Alice, Age: 21, GPA: 3.9
